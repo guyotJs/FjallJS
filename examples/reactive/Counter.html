@@ -4,15 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reactive Project</title>
-    <script src="https://guyotjs.github.io/Jhtml/build/jhtml.js"></script>
+    <script src="./jhtml.js"></script>
 </head>
 <body>
     <button onclick="increase()">Count+</button>
+    <button onclick="decrease()">Count-</button>
+    <button onclick="reset()">Reset</button>
     <p id="amnt">Amount:0</p>
     <script>
-        let amount = 0;
+        function setCookie(cname, cvalue, exdays) {
+            const d = new Date();
+            d.setTime(d.getTime() + (exdays*24*60*60*1000));
+            let expires = "expires="+ d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+        function getCookie(cname) {
+            let name = cname + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+            for(let i = 0; i <ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') {c = c.substring(1);}
+                if (c.indexOf(name) == 0) {return c.substring(name.length, c.length);}
+            }return "";
+        }
+        let amount = getCookie("c");
+        content("amnt","Amount:"+amount);
         function increase(){
             amount++;
+            setCookie("c",amount,365)
+            content("amnt","Amount:"+amount);
+        }
+        function decrease(){
+            amount--;
+            setCookie("c",amount,365)
+            content("amnt","Amount:"+amount);
+        }
+        function reset(){
+            amount=0;
+            setCookie("c",amount,365)
             content("amnt","Amount:"+amount);
         }
     </script>
