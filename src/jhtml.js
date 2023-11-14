@@ -58,3 +58,7 @@ var toggle = function(tg){
         return true;
     }
 }
+window.main = function(){
+    requestAnimationFrame( main );
+    if(react() == 0){react();}
+};main();
