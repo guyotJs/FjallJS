@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jhtml</title>
+    <script src="jhtml.js"></script>
+</head>
+<body>
+    <button class="poo" onclick="para()">
+        Show Paragraph
+    </button>
+    <button onclick="shay()">
+        Show Link
+    </button>
+    <button onclick="change()">
+        Change some text
+    </button>
+    <p class="poo" if="show">
+        Yay you can see me.
+    </p>
+    <p><a href="#link" if="shhay">Ooh me too</a></p>
+    <div incl="content.html">
+
+    </div>
+    <p id="shift">
+        This text will change
+    </p>
+    <script>
+        let show = ["show",false]
+        let shhay = ["shhay",false]
+        function shay(){
+            shhay[1] = toggle(shhay[1])
+        }
+        function para(){
+           show[1] = toggle(show[1])
+        }
+        function change(){
+            content('shift','The text changed')
+        }
+        jif([show,shhay])
+        include()
+        style('poo','color','green')
+    </script>
+</body>
+</html>
