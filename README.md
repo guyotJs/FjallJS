@@ -12,7 +12,7 @@ A tiny JavaScript library that simplifies webdev
 
 ## Download
 
-Download the latest release <a href="https://guyotjs.github.io/Jhtml/build/jhtml.js" download>Here</a>
+Download the latest release [Here](https://guyotjs.github.io/Jhtml/build/jhtml.js "download")
 
 Or link in the head tag. 
 ```html
