@@ -29,21 +29,21 @@
             }return "";
         }
         let amount = getCookie("c");
-        content("amnt","Amount:"+amount);
         function increase(){
             amount++;
             setCookie("c",amount,365)
-            content("amnt","Amount:"+amount);
         }
         function decrease(){
             amount--;
             setCookie("c",amount,365)
-            content("amnt","Amount:"+amount);
         }
         function reset(){
             amount=0;
             setCookie("c",amount,365)
+        }
+        function react(){
             content("amnt","Amount:"+amount);
+            return 0;
         }
     </script>
 </body>
