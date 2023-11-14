@@ -10,3 +10,11 @@ A tiny JavaScript library that simplifies webdev
 
 [GuyotJS/Jhtml](https://guyotjs.github.io/Jhtml)
 
+## Download
+
+Download the latest release [here](https://guyotjs.github.io/Jhtml/build/jhtml-src.js)
+
+Or link in the head tag. 
+```html
+<link rel="stylesheet"href="https://guyotjs.github.io/Jhtml/build/jhtml.js"/>
+``` 
