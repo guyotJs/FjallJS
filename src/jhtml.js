@@ -1,4 +1,4 @@
-/* Jhtml (Prerelease version) Nov. 14 2023 Weston */
+/* Jhtml (Prerelease version 0.2) Nov. 14 2023 Weston */
 var jif = function(arr){
     var z, i, elmnt, file;
     setInterval(jifloop,1)
