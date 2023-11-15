@@ -1,4 +1,4 @@
-/* Jhtml (Prerelease version 0.2) Nov. 14 2023 Weston */
+/* Jhtml (Prerelease version 0.3) Nov. 14 2023 Weston */
 var jif = function(arr){
     var z, i, elmnt, file;
     setInterval(jifloop,1)
@@ -15,6 +15,29 @@ var jif = function(arr){
                         }
                         if(arr[q][1]==false){
                             elmnt.style.display = "none"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+var jelse = function(arr){
+    var z, i, elmnt, file;
+    setInterval(jifloop,1)
+    function jifloop(){
+        z = document.getElementsByTagName("*");
+        for (i = 0; i < z.length; i++) {
+            elmnt = z[i];
+            file = elmnt.getAttribute("else");
+            if(file!=null){
+                for(let q = 0; q < arr.length; q++){
+                    if(file == arr[q][0]){
+                        if(arr[q][1]){
+                            elmnt.style.display = "none"
+                        }
+                        if(arr[q][1]==false){
+                            elmnt.style.display = "block"
                         }
                     }
                 }
