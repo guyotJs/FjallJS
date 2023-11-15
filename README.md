@@ -20,5 +20,5 @@ Download the latest release [Here](https://guyotjs.github.io/Jhtml/build/jhtml.j
 
 Or link in the head tag. 
 ```html
-<link rel="stylesheet"href="https://guyotjs.github.io/Jhtml/build/jhtml.js"/>
+<script src="https://guyotjs.github.io/Jhtml/build/jhtml.js"></script>
 ``` 
