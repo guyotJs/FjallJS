@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>If/Else</title>
+    <script src="https://guyotjs.github.io/Jhtml/build/jhtml.js"></script>
+</head>
+<body>
+    <h1>If / Else tags</h1>
+    <button onclick="clicked()">Show/Hide</button>
+    <p class="blue" if="flipflop">If the val = true, this is shown.</p>
+    <p class="green" else="flipflop">If the val = false, this is shown.</p>
+    <script>
+        let flipflop = ["flipflop",true]
+        style("green","color","green");style("blue","color","blue");
+        function clicked(){
+            flipflop[1] = toggle(flipflop[1]);
+        }
+        function react(){
+            jif([flipflop]);
+            jelse([flipflop]);
+            return 0;
+        }
+    </script>
+</body>
+</html>
