@@ -1,4 +1,4 @@
-# Jhtml
+![Jhtml](./jhtmlrbg.png)
 
 A tiny JavaScript library that simplifies webdev
 
