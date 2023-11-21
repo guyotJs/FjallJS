@@ -1,4 +1,4 @@
-/* Jhtml (Prerelease version 0.3) Nov. 14 2023 Weston */
+/* Jhtml (Prerelease version 0.4) Nov. 21 2023 Weston */
 var jif = function(arr){
     var z, i, elmnt, file;
     setInterval(jifloop,1)
@@ -11,7 +11,7 @@ var jif = function(arr){
                 for(let q = 0; q < arr.length; q++){
                     if(file == arr[q][0]){
                         if(arr[q][1]){
-                            elmnt.style.display = "block"
+                            elmnt.style.display = ""
                         }
                         if(arr[q][1]==false){
                             elmnt.style.display = "none"
@@ -44,6 +44,46 @@ var jelse = function(arr){
             }
         }
     }
+}
+var jmobile = function(){
+    var z, i, elmnt, file;
+    setInterval(jifloop,1)
+    function jifloop(){
+        z = document.getElementsByTagName("*");
+        for (i = 0; i < z.length; i++) {
+            elmnt = z[i];
+            file = elmnt.getAttribute("mobile");
+            if(file !=null){
+                if(window.innerWidth < 600){
+                    elmnt.style.display = ""
+                }else{
+                    elmnt.style.display = "none"
+                }
+            }
+        }
+    }
+}
+var jcomputer = function(){
+    var z, i, elmnt, file;
+    setInterval(jifloop,1)
+    function jifloop(){
+        z = document.getElementsByTagName("*");
+        for (i = 0; i < z.length; i++) {
+            elmnt = z[i];
+            file = elmnt.getAttribute("computer");
+            if(file !=null){
+                if(window.innerWidth >= 600){
+                    elmnt.style.display = ""
+                }else{
+                    elmnt.style.display = "none"
+                }
+            }
+        }
+    }
+}
+var jscreen = function(){
+    jcomputer();
+    jmobile();
 }
 var style = function(id, type, shift){
     var elem = document.getElementsByClassName(id)
