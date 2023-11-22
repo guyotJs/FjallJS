@@ -6,8 +6,8 @@ var jif = function(obj){
         file = elmnt.getAttribute("if");
         if(file!=null){
             for(let q = 0; q < obj.length; q++){
-                if(Object.keys(obj[0]) == file){
-                    if(!Object.values(obj[0])[0]){
+                if(Object.keys(obj[q]) == file){
+                    if(!Object.values(obj[q])[0]){
                         elmnt.style.display="none"
                     }else{
                         elmnt.style.display="block"
@@ -26,8 +26,8 @@ var jelse = function(obj){
         file = elmnt.getAttribute("else");
         if(file!=null){
             for(let q = 0; q < obj.length; q++){
-                if(Object.keys(obj[0]) == file){
-                    if(!Object.values(obj[0])[0]){
+                if(Object.keys(obj[q]) == file){
+                    if(!Object.values(obj[q])[0]){
                         elmnt.style.display="block"
                     }else{
                         elmnt.style.display="none"
