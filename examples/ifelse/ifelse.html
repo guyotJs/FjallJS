@@ -4,22 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>If/Else</title>
-    <script src="https://guyotjs.github.io/Jhtml/build/jhtml.js"></script>
 </head>
-<body>
-    <h1>If / Else tags</h1>
-    <button onclick="clicked()">Show/Hide</button>
-    <p class="blue" if="flipflop">If the val = true, this is shown.</p>
-    <p class="green" else="flipflop">If the val = false, this is shown.</p>
+<body><br/>
+    <h1>If/Else</h1>
+    <br/>
+
+    <button onclick="change()">
+        <h2 if="show">&nbsp;&nbsp;If&nbsp;&nbsp;</h2>
+        <h2 else="show">Else</h3><span if="count" class="small gray italic">Click Me!</span>
+    </button>
+
+
+    <script src="https://guyotjs.github.io/Jhtml/build/jhtml.js"></script>
     <script>
-        let flipflop = ["flipflop",true]
-        style("green","color","green");style("blue","color","blue");
-        function clicked(){
-            flipflop[1] = toggle(flipflop[1]);
+        let show = true;
+        let count = true;
+        let counter = 0;
+        function change(){
+            if(counter != 1){
+                count = toggle(count);
+            }
+            show = toggle(show);
+            counter = 1;
         }
+        style("small","font-size","10px");style("gray","color","gray");style("italic","font-style","italic")
         function react(){
-            jif([flipflop]);
-            jelse([flipflop]);
+            jif([{show},{count}]);
+            jelse([{show}])
             return 0;
         }
     </script>
