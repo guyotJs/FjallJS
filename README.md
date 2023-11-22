@@ -12,7 +12,8 @@ A tiny JavaScript library that simplifies webdev
 
 ## Tutorial
 
-You can find the tutorial [Here](https://guyotjs.github.io/Jhtml/TUTORIAL)
+You can find the first tutorial [Here](https://guyotjs.github.io/Jhtml/TUTORIAL)
+You can find the second tutorial [Here](https://guyotjs.github.io/Jhtml/2UTORIAL)
 
 ## Download
 
