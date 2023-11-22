@@ -1,45 +1,39 @@
-/* Jhtml (Prerelease version 0.4) Nov. 21 2023 Weston */
-var jif = function(arr){
+/* Jhtml (Prerelease version 0.4) Nov. 22 2023 Weston */
+var jif = function(obj){
     var z, i, elmnt, file;
-    setInterval(jifloop,1)
-    function jifloop(){
-        z = document.getElementsByTagName("*");
-        for (i = 0; i < z.length; i++) {
-            elmnt = z[i];
-            file = elmnt.getAttribute("if");
-            if(file!=null){
-                for(let q = 0; q < arr.length; q++){
-                    if(file == arr[q][0]){
-                        if(arr[q][1]){
-                            elmnt.style.display = ""
-                        }
-                        if(arr[q][1]==false){
-                            elmnt.style.display = "none"
-                        }
+    z = document.getElementsByTagName("*");
+    for (i = 0; i < z.length; i++) {
+        elmnt = z[i];
+        file = elmnt.getAttribute("if");
+        if(file!=null){
+            for(let q = 0; q < obj.length; q++){
+                if(Object.keys(obj[0]) == file){
+                    if(!Object.values(obj[0])[0]){
+                        elmnt.style.display="none"
+                    }else{
+                        elmnt.style.display="block"
                     }
+
                 }
             }
         }
     }
 }
-var jelse = function(arr){
+var jelse = function(obj){
     var z, i, elmnt, file;
-    setInterval(jifloop,1)
-    function jifloop(){
-        z = document.getElementsByTagName("*");
-        for (i = 0; i < z.length; i++) {
-            elmnt = z[i];
-            file = elmnt.getAttribute("else");
-            if(file!=null){
-                for(let q = 0; q < arr.length; q++){
-                    if(file == arr[q][0]){
-                        if(arr[q][1]){
-                            elmnt.style.display = "none"
-                        }
-                        if(arr[q][1]==false){
-                            elmnt.style.display = "block"
-                        }
+    z = document.getElementsByTagName("*");
+    for (i = 0; i < z.length; i++) {
+        elmnt = z[i];
+        file = elmnt.getAttribute("else");
+        if(file!=null){
+            for(let q = 0; q < obj.length; q++){
+                if(Object.keys(obj[0]) == file){
+                    if(!Object.values(obj[0])[0]){
+                        elmnt.style.display="block"
+                    }else{
+                        elmnt.style.display="none"
                     }
+
                 }
             }
         }
