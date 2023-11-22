@@ -1,4 +1,4 @@
-/* Jhtml (Prerelease version 0.4) Nov. 22 2023 Weston */
+/* Jhtml (Prerelease version 0.5) Nov. 22 2023 Weston */
 var jif = function(obj){
     var z, i, elmnt, file;
     z = document.getElementsByTagName("*");
