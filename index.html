@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FjallJS - More with Less</title>
+    <link rel="stylesheet" href="https://classicmc-studios.github.io/bc.css"/>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@100&family=Roboto:wght@100&display=swap');
+        *{
+            font-family:'Roboto',sans-serif;
+        }
+        h1{
+            font-size: 60px;
+        }
+        .sub{
+            font-family: 'Roboto',sans-serif;
+            font-size: 20px;
+            color:gray;
+            font-style: italic;
+        }
+        p{
+            font-family: 'Open Sans','Roboto',sans-serif;
+        }
+        .item{
+            border-bottom:1px solid lightgray;
+            margin:10px;
+        }
+    </style>
+</head>
+<body align="center" l-data='{"title":"Fjall","counter":0,"attr":["l-if/l-else","lint","l-for","l-data","l-bind"],"active":"min is 4.79kb"}'>
+    <p l-exe='attr.push("l-click")'></p>
+    <h1 lint class="fjall">
+        # {{title}}JS
+    </h1>
+    <p class="sub">
+        More with Less
+    </p><br/>
+    <p>A new Lightweight JavaScript framework to add reactivity in a **snap**</p><br/>
+    <div class="bc-border bc-compact bc-left-50">
+        <button l-click="counter++;" class="bc-white bc-text-black bc-border bc-p-5 bc-hover-p-10 bc-m-10 bc-r-0">Increment</button>
+        <p lint>
+            Count: {{counter}}
+        </p>
+    </div><br/>
+    <div class="bc-border bc-compact bc-left-50 bc-p-25">
+        <h2>## With Attributes Like...</h2>
+        <ol align="left" class="bc-m-10" l-for="attr" for-item="li" item-class="item"></ol>
+    </div><br/>
+    <h2>## Absolutely <em>TINY</em></h2>
+    <div>
+        <button l-click='active="src is 9.03kb"' class="bc-white bc-text-black bc-border bc-p-5 bc-hover-p-10 bc-m-5 bc-r-0">Source</button>
+        <button l-click='active="min is 4.79kb"' class="bc-white bc-text-black bc-border bc-p-5 bc-hover-p-10 bc-m-5 bc-r-0">Min</button>
+        <button l-click='active="build is 1.84kb"' class="bc-white bc-text-black bc-border bc-p-5 bc-hover-p-10 bc-m-5 bc-r-0">Build</button><br/>
+        <span>Fjall</span>
+        <em lint>
+            {{active}}!!
+        </em>
+    </div>
+    <script src="https://guyotjs.github.io/FjallJS/build/fjall-min.js"></script>
+</body>
+</html>
