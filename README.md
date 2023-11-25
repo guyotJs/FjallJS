@@ -8,6 +8,7 @@ A lightweight JavaScript framework to add reactivity in a **_snap_**
 <body l-data='{"counter":0}'>
   <button l-click="counter++;">Increment</button>
   <p lint>Count is: {{counter}}</p>
+  <script src="./Fjall.js"></script>
 </body>
 ```
 
