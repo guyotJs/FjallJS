@@ -1,25 +1,38 @@
-![Jhtml](./jhtmlrbg.png)
+# # FjallJS
 
-A tiny JavaScript library that simplifies webdev
+> More with Less
 
-> Lightweight - one file
->  
->  Introduce reactive content anywhere
->   
->   Smallest router between JS and HTML
+A lightweight JavaScript framework to add reactivity in a **_snap_**
 
-[GuyotJS/Jhtml](https://guyotjs.github.io/Jhtml)
-
-## Tutorial
-
-You can find the first tutorial [Here](https://guyotjs.github.io/Jhtml/TUTORIAL)
-You can find the second tutorial [Here](https://guyotjs.github.io/Jhtml/2UTORIAL)
-
-## Download
-
-Download the latest release [Here](https://guyotjs.github.io/Jhtml/build/jhtml.js "download")
-
-Or link in the head tag. 
 ```html
-<script src="https://guyotjs.github.io/Jhtml/build/jhtml.js"></script>
-``` 
+<body l-data='{"counter":0}'>
+  <button l-click="counter++;">Increment</button>
+  <p lint>Count is: {{counter}}</p>
+</body>
+```
+
+## ## With attributes like
+
+1. **l-data**
+2. **l-if** / **l-else**
+3. **l-click**
+4. **l-for**
+5. **lint**
+
+## ## 4.79kb Build
+
+**FjallJS** is as tiny as you need with only **285** lines of JS<br/>
+_Use less JavaScript write more HTML_
+
+## ## Add Fjall to your project
+
+All you need is **One** script tag<br/>
+Download Locally [Here](https://guyotjs.github.io/FjallJS/build/fjall-min.js)
+
+Run from the link with a script tag
+
+```html
+<script src="https://guyotjs.github.io/FjallJS/build/fjall-min.js"></script>
+```
+
+<ins>Liscensed with MIT</ins>
