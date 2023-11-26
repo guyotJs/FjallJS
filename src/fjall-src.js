@@ -5,6 +5,7 @@ let bounds = [];
 let createdFors = [];
 let liveForHost = [];
 let screenWatch = [];
+let liveForClassStuff = []
 function jdat(){
     var z, i, elmnt, file,jsonify;
     z = document.getElementsByTagName("*");
@@ -82,6 +83,7 @@ function createLiveFor(elmnt,file){
 	var key,para;
 	let childType = elmnt.getAttribute("item")
 	let childClasses = elmnt.getAttribute("item-class")
+	liveForClassStuff.push([childType,childClasses])
 	for(let q=0;q<Object.keys(data).length;q++){
 		if(file.includes(Object.keys(data)[q])){
 			createdFors.push([Object.keys(data)[q],[]])
@@ -147,8 +149,8 @@ window.main = function(){
 				alreadyCreated= createdFors[i].length
 				arrayHolding= data[liveForHost[i][0]].length
 				if(arrayHolding!=(parseInt(alreadyCreated)-2)){
-					para= document.createElement(createdFors[i][3].tagName)
-					para.classList = createdFors[i][3].classList;
+					para= document.createElement(liveForClassStuff[i][0])
+					para.classList = liveForClassStuff[i][1];
 					para.innerText = data[liveForHost[i][0]][data[liveForHost[i][0]].length-1]
 					liveForHost[i][1].appendChild(para);
 					createdFors[i].push(para)
