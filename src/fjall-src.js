@@ -1,285 +1,177 @@
+let attr = ["if","else","click","bind","for","lint","mobile","computer"]
+let reactors = [];
+let lints = [];
+let bounds = [];
+let createdFors = [];
+let liveForHost = [];
+let screenWatch = [];
 function jdat(){
     var z, i, elmnt, file,jsonify;
     z = document.getElementsByTagName("*");
     for (i = 0; i < z.length; i++) {
         elmnt = z[i];
-        file = elmnt.getAttribute("l-data");
+        file = elmnt.getAttribute("data");
         if(file!=null){
             jsonify = JSON.parse(file)
             return jsonify;
         }
     }
 };let data = jdat()
-function toggle(){
-    var z, i, elmnt, file,jsonify;
+function preRender(){
+	var z, i, elmnt, file;
     z = document.getElementsByTagName("*");
-    for (i = 0; i < z.length; i++) {
-        elmnt = z[i];
-        file = elmnt.getAttribute("l-toggle");
-        if(file!=null){
-            elmnt.File = file;
-            elmnt.addEventListener("click",function(evt){
-                for(let q = 0; q < Object.keys(data).length;q++){
-                    if(Object.keys(data)[q] == evt.currentTarget.File){
-                        if(Object.values(data)[q] == true){
-                            data[evt.currentTarget.File] = false;
-                        }else{
-                            data[evt.currentTarget.File] = true;
-                        }
-                    }
-                }
-            });
-        }
-    }
-};toggle();
-function exe(){
-    var z, i, elmnt, file,jsonify;
-    z = document.getElementsByTagName("*");
-    for (i = 0; i < z.length; i++) {
-        elmnt = z[i];
-        file = elmnt.getAttribute("l-exe");
-        if(file!=null){
-            try{
-                for(let i = 0;i<Object.keys(data).length;i++){
-                    if(file.includes(Object.keys(data)[i])){    
-                        file = file.replace(Object.keys(data)[i],`data["${Object.keys(data)[i]}"]`)
-                        eval(file);
-                    }
-                }
-            } catch(error){
-                alert("Error:"+error)
-            }
-        }
-    }
-};exe();
-function clicker(){
-    var z, i, elmnt, file,jsonify;
-    z = document.getElementsByTagName("*");
-    for (i = 0; i < z.length; i++) {
-        elmnt = z[i];
-        file = elmnt.getAttribute("l-click");
-        if(file!=null){
-            elmnt.File = file;
-            elmnt.already = false;
-            elmnt.addEventListener("click",function(evt){
-                try{
-                    for(let i = 0;i<Object.keys(data).length;i++){
-                        if(evt.currentTarget.File.includes(Object.keys(data)[i])){
-                            if(!evt.currentTarget.already){
-                                evt.currentTarget.File = evt.currentTarget.File.replace(Object.keys(data)[i],`data["${Object.keys(data)[i]}"]`)
-                                evt.currentTarget.already=true;
-                            }
-                        }
-                    }
-                    eval(evt.currentTarget.File);
-                    // alert(evt.currentTarget.File)
-                    // alert(data["counter"])
-                }catch (error){
-                    console.log("Error with clicker():"+error)
-                }
-            });
-        }
-    }
-};clicker();
-function jif(){
-    var z, i, elmnt, file;
-    z = document.getElementsByTagName("*");
-    for (i = 0; i < z.length; i++) {
-        elmnt = z[i];
-        file = elmnt.getAttribute("l-if");
-        if(file!=null){
-            try{
-                for(let i = 0;i<Object.keys(data).length;i++){
-                    if(file.includes(Object.keys(data)[i])){    
-                        file = file.replace(Object.keys(data)[i],`data["${Object.keys(data)[i]}"]`)
-                        if(eval(file)){
-                            elmnt.style.display="block"
-                        }else{
-                            elmnt.style.display="none"
-                        }
-                    }
-                }
-            }catch (error){
-                console.log("Error in jif:"+error)
-            }
-        }
-    }
-};
-function jelse(){
-    var z, i, elmnt, file;
-    z = document.getElementsByTagName("*");
-    for (i = 0; i < z.length; i++) {
-        elmnt = z[i];
-        file = elmnt.getAttribute("l-else");
-        if(file!=null){
-            try{
-                for(let i = 0;i<Object.keys(data).length;i++){
-                    if(file.includes(Object.keys(data)[i])){    
-                        file = file.replace(Object.keys(data)[i],`data["${Object.keys(data)[i]}"]`)
-                        if(eval(file)){
-                            elmnt.style.display="none"
-                        }else{
-                            elmnt.style.display="block"
-                        }
-                    }
-                }
-            }catch (error){
-                console.log("Error in jelse:"+error)
-            }
-        }
-    }
-};
-function jinit(){
-    var z, i, elmnt, file,cloneText;
-    z = document.getElementsByTagName("*");
-    for (q = 0; q < z.length; q++) {
-        elmnt = z[q];
-        let pile = elmnt.textContent
-        file = elmnt.getAttribute("lint");
-        if(file!=null){
-            for(let i = 0;i<Object.keys(data).length;i++){
-                if(pile.includes(`{{${Object.keys(data)[i]}}}`)){
-                    jinitHelper(elmnt,pile,Object.keys(data)[i],i);
-                }
-            }
-        }
-    }
-};jinit();
-function jinitHelper(elmnt,text,v,dat){
-    setInterval(function(){
-        elmnt.textContent = text.replace(`{{${v}}}`,`${Object.values(data)[dat]}`)
-    },1)
+	for (i = 0; i < z.length; i++){
+    	elmnt = z[i];
+    	for(let q=0; q<attr.length;q++){
+    		file = elmnt.getAttribute(attr[q]);
+    		if(file!=null){
+    			if(q==0||q==1){
+    				addReactiveState(elmnt,attr[q],file)
+    			}else if(q==2){
+    				createClickHandler(elmnt,attr[q],file)
+    			}else if (q==5){
+    				linter(elmnt,elmnt.innerText)
+    			}else if (q==3){
+    				binder(elmnt,file)
+    			}else if(q==4){
+    				createLiveFor(elmnt,file);
+    			}else if(q==6){
+    				screenIfy(elmnt,"mobile")
+    			}
+    			else if(q==7){
+    				screenIfy(elmnt,"computer")
+    			}
+    		}
+    	}
+	}
+};preRender();
+function createClickHandler(elmnt,type,file){
+	elmnt.Type = type; elmnt.File = file; elmnt.already = false
+	elmnt.addEventListener('click',function(evt){
+		try{
+	        for(let i = 0;i<Object.keys(data).length;i++){
+	            if(evt.currentTarget.File.includes(Object.keys(data)[i])){
+	                if(!evt.currentTarget.already){
+	                    evt.currentTarget.File = evt.currentTarget.File.replaceAll(Object.keys(data)[i],`data["${Object.keys(data)[i]}"]`)
+	                }
+	            }
+	        }
+	        evt.currentTarget.already=true;
+	        eval(evt.currentTarget.File);
+	    }catch (error){
+	        console.log("Error with clicker():"+error)
+	    }
+	});
 }
-function jfor(){
-    var z, i, elmnt, file,childCreate;
-    z = document.getElementsByTagName("*");
-    var para;
-    for (q = 0; q < z.length; q++) {
-        elmnt = z[q];
-        file = elmnt.getAttribute("l-for");  
-        childCreate = elmnt.getAttribute("for-item")
-        childStyle = elmnt.getAttribute("item-class")  
-        if(file!=null){
-            for(let i = 0;i<Object.keys(data).length;i++){
-                if(file.includes(Object.keys(data)[i])){
-                    for(item in Object.values(data)[i]){
-                        para = document.createElement(childCreate);
-                        para.classList = childStyle;
-                        elmnt.appendChild(para);
-                        jforHelper(para,item,Object.keys(data)[i],Object.values(data).length,elmnt,childCreate,childStyle);
-                    }
-                    jforNewHelper(Object.keys(data)[i],childCreate,childStyle,elmnt);
-                }
-            }
-        }
-    }
-};jfor()
-function jforHelper(guy,i,key,ogsize,elmnt,childCreate,childStyle){
-    setInterval(function(){
-        guy.innerText = data[key][i];
-    },1);
+function addReactiveState(elmnt,type,file){
+	reactors.push([elmnt,type,file])
 }
-function jforNewHelper(key,type,style,elmnt){
-    var para;
-    ogsize=data[key].length;
-    setInterval(function(){
-        if(ogsize!=data[key].length&&elmnt.childNodes.length != data[key].length){
-            ogsize=data[key].length;
-            para = document.createElement(type)
-            para.classList = style;
-            elmnt.appendChild(para);
-            jforHelper(para,data[key].length-1,key)
-        }
-    },1)
-};
-function jbind(){
-    var z, i, elmnt, file,cloneText,key;
-    z = document.getElementsByTagName("*");
-    for (q = 0; q < z.length; q++) {
-        elmnt = z[q];
-        file = elmnt.getAttribute("l-bind");
-        if(file!=null){
-            for(let i = 0;i<Object.keys(data).length;i++){
-                if(file.includes(Object.keys(data)[i])){    
-                   key = Object.keys(data)[i]
-                   jbindHelper(elmnt,key)
-                }
-            }
-        }
-    }
-};
-function jbindHelper(elmnt,key){
-    setInterval(function(){
-        data[key] = elmnt.value
-    },1)
+function toggle(name){
+	if(name){return false;}else{return true;}
 }
-var jmobile = function(){
-    var z, i, elmnt, file;
-    setInterval(jifloop,1)
-    function jifloop(){
-        z = document.getElementsByTagName("*");
-        for (i = 0; i < z.length; i++) {
-            elmnt = z[i];
-            file = elmnt.getAttribute("mobile");
-            if(file !=null){
-                if(window.innerWidth < 600){
-                    elmnt.style.display = ""
-                }else{
-                    elmnt.style.display = "none"
-                }
-            }
-        }
-    }
+function linter(elmnt,text){
+	lints.push([elmnt,text])
 }
-var jcomputer = function(){
-    var z, i, elmnt, file;
-    setInterval(jifloop,1)
-    function jifloop(){
-        z = document.getElementsByTagName("*");
-        for (i = 0; i < z.length; i++) {
-            elmnt = z[i];
-            file = elmnt.getAttribute("computer");
-            if(file !=null){
-                if(window.innerWidth >= 600){
-                    elmnt.style.display = ""
-                }else{
-                    elmnt.style.display = "none"
-                }
-            }
-        }
-    }
+function screenIfy(elmnt,type){
+	screenWatch.push([elmnt,type])
 }
-var include = function(){
-    var z, i, elmnt, dat;
-    z = document.getElementsByTagName("*");
-    for (i = 0; i < z.length; i++) {
-        elmnt = z[i];
-        dat = elmnt.getAttribute("incl");
-        if (dat) {
-            xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function() {
-              if (this.readyState == 4) {
-                if (this.status == 200) {elmnt.innerHTML = this.responseText;}
-              }
-            }      
-            xhttp.open("GET", dat, true);
-            xhttp.send();
-            return;
-          }
-    }
-};
-var jscreen = function(){
-    jcomputer();
-    jmobile();
+function binder(elmnt,file){
+	bounds.push([elmnt,file]);
 }
-function react(){
-    jif();
-    jscreen();
-    include();
-    jelse();
-    jbind();
+function createLiveFor(elmnt,file){
+	var key,para;
+	let childType = elmnt.getAttribute("item")
+	let childClasses = elmnt.getAttribute("item-class")
+	for(let q=0;q<Object.keys(data).length;q++){
+		if(file.includes(Object.keys(data)[q])){
+			createdFors.push([Object.keys(data)[q],[]])
+			length = createdFors.length
+			liveForHost.push([Object.keys(data)[q],elmnt])
+			key = Object.keys(data)[q]
+			for(let i=0;i<data[key].length;i++){
+				para = document.createElement(childType);
+				para.classList = childClasses;
+				para.innerText = data[key][i] 
+				elmnt.appendChild(para);
+				createdFors[length-1].push(para)
+			}
+		}
+	}
 }
 window.main = function(){
-    requestAnimationFrame( main );
-    react();
+	requestAnimationFrame( main );
+	if(reactors.length!=0){
+		for(let i = 0; i<reactors.length;i++){
+			for(let q = 0; q<Object.keys(data).length;q++){
+				if(reactors[i][2] == Object.keys(data)[q]){
+					if(reactors[i][1]=="if"){
+						if(Object.values(data)[q]==true){
+							reactors[i][0].style.display = "block"
+						}else if(Object.values(data)[q]==false){
+							reactors[i][0].style.display = "none"
+						}
+					}
+					else if(reactors[i][1]=="else"){
+						if(Object.values(data)[q]==true){
+							reactors[i][0].style.display = "none"
+						}else if(Object.values(data)[q]==false){
+							reactors[i][0].style.display = "block"
+						}
+					}
+				}
+			}
+		}
+	}
+	if(lints.length !=0){
+		for(let q=0;q<Object.keys(data).length;q++){
+			for(let i=0;i<lints.length;i++){
+				if(lints[i][1].includes(`{{${Object.keys(data)[q]}}}`)){
+					lints[i][0].innerText = lints[i][1].replace(`{{${Object.keys(data)[q]}}}`,Object.values(data)[q])
+				}
+			}
+		}
+	}
+	if(bounds.length !=0){
+		for(let q=0;q<Object.keys(data).length;q++){
+			for(let i=0;i<bounds.length;i++){
+				if(bounds[i][1].includes(Object.keys(data)[q])){
+					data[Object.keys(data)[q]] = bounds[i][0].value
+				}
+			}
+		}
+	}
+	if(liveForHost.length !=0){
+		var alreadyCreated,arrayHolding,para;
+		for(let i=0;i<liveForHost.length;i++){
+			if(liveForHost[i][0]==createdFors[i][0]){
+				alreadyCreated= createdFors[i].length
+				arrayHolding= data[liveForHost[i][0]].length
+				if(arrayHolding!=(parseInt(alreadyCreated)-2)){
+					para= document.createElement(createdFors[i][3].tagName)
+					para.classList = createdFors[i][3].classList;
+					para.innerText = data[liveForHost[i][0]][data[liveForHost[i][0]].length-1]
+					liveForHost[i][1].appendChild(para);
+					createdFors[i].push(para)
+				}
+			}
+		}
+	}
+	if(screenWatch.length!=0){
+		for(let i=0;i<screenWatch.length;i++){
+			if(screenWatch[i][1]=="mobile"){
+				if(window.innerWidth <= 600){
+					screenWatch[i][0].style.display="block"
+				}else{
+					screenWatch[i][0].style.display="none"
+				}
+			}
+			if(screenWatch[i][1]=="computer"){
+				if(window.innerWidth <= 600){
+					screenWatch[i][0].style.display="none"
+				}else{
+					screenWatch[i][0].style.display="block"
+				}
+			}
+		}
+	}
 };main();
