@@ -28,8 +28,7 @@
         }
     </style>
 </head>
-<body align="center" l-data='{"title":"Fjall","counter":0,"attr":["l-if/l-else","lint","l-for","l-data","l-bind"],"active":"min is 4.79kb"}'>
-    <p l-exe='attr.push("l-click")'></p>
+<body align="center" data='{"title":"Fjall","counter":0,"attr":["if/else","lint","for","data","bind"],"active":"min is 3.46kb"}'>
     <h1 lint class="fjall">
         # {{title}}JS
     </h1>
@@ -38,20 +37,20 @@
     </p><br/>
     <p>A new Lightweight JavaScript framework to add reactivity in a **snap**</p><br/>
     <div class="bc-border bc-compact bc-left-50">
-        <button l-click="counter++;" class="bc-white bc-text-black bc-border bc-p-5 bc-hover-p-10 bc-m-10 bc-r-0">Increment</button>
+        <button click="counter++;" class="bc-white bc-text-black bc-border bc-p-5 bc-hover-p-10 bc-m-10 bc-r-0">Increment</button>
         <p lint>
             Count: {{counter}}
         </p>
     </div><br/>
     <div class="bc-border bc-compact bc-left-50 bc-p-25">
         <h2>## With Attributes Like...</h2>
-        <ol align="left" class="bc-m-10" l-for="attr" for-item="li" item-class="item"></ol>
+        <ol align="left" class="bc-m-10" for="attr" item="li" item-class="item"></ol>
     </div><br/>
     <h2>## Absolutely <em>TINY</em></h2>
     <div>
-        <button l-click='active="src is 9.03kb"' class="bc-white bc-text-black bc-border bc-p-5 bc-hover-p-10 bc-m-5 bc-r-0">Source</button>
-        <button l-click='active="min is 4.79kb"' class="bc-white bc-text-black bc-border bc-p-5 bc-hover-p-10 bc-m-5 bc-r-0">Min</button>
-        <button l-click='active="build is 1.84kb"' class="bc-white bc-text-black bc-border bc-p-5 bc-hover-p-10 bc-m-5 bc-r-0">Build</button><br/>
+        <button click='active="src is 5.01kb"' class="bc-white bc-text-black bc-border bc-p-5 bc-hover-p-10 bc-m-5 bc-r-0">Source</button>
+        <button click='active="min is 3.46kb"' class="bc-white bc-text-black bc-border bc-p-5 bc-hover-p-10 bc-m-5 bc-r-0">Min</button>
+        <button click='active="build is 1.57kb"' class="bc-white bc-text-black bc-border bc-p-5 bc-hover-p-10 bc-m-5 bc-r-0">Build</button><br/>
         <span>Fjall</span>
         <em lint>
             {{active}}!!
