@@ -14,15 +14,15 @@ A lightweight JavaScript framework to add reactivity in a **_snap_**
 
 ## ## With attributes like
 
-1. **l-data**
-2. **l-if** / **l-else**
-3. **l-click**
-4. **l-for**
+1. **data**
+2. **if** / **else**
+3. **click**
+4. **for**
 5. **lint**
 
 ## ## 4.79kb Build
 
-**FjallJS** is as tiny as you need with only **285** lines of JS<br/>
+**FjallJS** is as tiny as you need with only **177** lines of JS<br/>
 _Use less JavaScript write more HTML_
 
 ## ## Add Fjall to your project
