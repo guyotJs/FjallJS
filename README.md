@@ -20,7 +20,7 @@ A lightweight JavaScript framework to add reactivity in a **_snap_**
 4. **for**
 5. **lint**
 
-## ## 4.79kb Build
+## ## 3.46kb Build
 
 **FjallJS** is as tiny as you need with only **177** lines of JS<br/>
 _Use less JavaScript write more HTML_
