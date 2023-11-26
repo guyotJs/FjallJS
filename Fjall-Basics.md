@@ -60,7 +60,7 @@ c. item-class="(how to style the items)"
 ```html
 <body data='{"arr":[],"val":""}'>
   <input placeholder="Add Todo" type="text" bind="val"/>
-  <button click='arr.push(val)'></button>
+  <button click='arr.push(val)'>Add Todo!</button>
   <ol for="arr" item="li" item-class=""></ol>
   <script src="./fjall-min.js"></script>
 </body>
