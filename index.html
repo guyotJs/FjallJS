@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FjallJS - More with Less</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Fjall - More with Less</title>
     <link rel="stylesheet" href="https://classicmc-studios.github.io/bc.css"/>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@100&family=Roboto:wght@100&display=swap');
+    <style type="text/css">
+    	@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@900&family=Roboto:wght@100&display=swap');
         *{
             font-family:'Roboto',sans-serif;
         }
@@ -20,42 +21,89 @@
             font-style: italic;
         }
         p{
-            font-family: 'Open Sans','Roboto',sans-serif;
+            font-family: 'Roboto',sans-serif;
+        }
+        b{
+            font-weight: 100;
+            font-family: 'Open Sans',sans-serif;
         }
         .item{
             border-bottom:1px solid lightgray;
             margin:10px;
         }
+        .grad{
+            animation: background-pan 3s linear infinite;
+            background-image: linear-gradient(to right, blue,lightblue,darkblue);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            white-space: nowrap;
+            background-size: 200%;
+        }
+        a{
+            color:blue;
+            text-decoration: underline;
+        }
+        .true-center-with-mac{
+            display: inline-block;
+        }
+        blockquote{
+            --mar:10px;
+            display: inline-block;
+            padding: 5px;
+            border-left: 2px solid gray;
+            margin-left:var(--mar);margin-left:var(--mar);
+        }
+        pre code {
+          background-color: #eee;
+          border-radius: 10px;
+          display: block;
+          padding: 20px;
+          display: inline-block;
+        }
     </style>
 </head>
-<body align="center" data='{"title":"Fjall","counter":0,"attr":["if/else","lint","for","data","bind"],"active":"min is 3.51kb"}'>
-    <h1 lint class="fjall">
-        # {{title}}JS
+<body class="bc-text-align" data='{"title":"Fjall","attr":["if/else","lint","for","data","bind"],"active":"min is 3.46kb","counter":0}'>
+    <h1>
+        <a href="#Fjall">#</a> <span id="Fjall" class="grad" lint>{{title}}</span>.JS
     </h1>
     <p class="sub">
         More with Less
     </p><br/>
-    <p>A new Lightweight JavaScript framework to add reactivity in a **snap**</p><br/>
-    <div class="bc-border bc-compact bc-left-50">
+    <p>A new Lightweight JavaScript framework to add reactivity in a **<b>snap</b>**</p><br/>
+    <div class="bc-border true-center-with-mac">
         <button click="counter++;" class="bc-white bc-text-black bc-border bc-p-5 bc-hover-p-10 bc-m-10 bc-r-0">Increment</button>
         <p lint>
             Count: {{counter}}
         </p>
-    </div><br/>
-    <div class="bc-border bc-compact bc-left-50 bc-p-25">
-        <h2>## With Attributes Like...</h2>
-        <ol align="left" class="bc-m-10" for="attr" item="li" item-class="item"></ol>
-    </div><br/>
-    <h2>## Absolutely <em>TINY</em></h2>
+    </div><br/><br/>
+    <div class="bc-border true-center-with-mac bc-p-25">
+        <h2 id="with-attr"><a href="#with-attr">##</a> With Attributes Like...</h2>
+        <ol style="text-align:left;" class="bc-m-10" for="attr" item="li" item-class="item"></ol>
+    </div><br/><br/>
+    <h2><a href="#TINY">##</a> Absolutely <em id="TINY">TINY</em></h2>
     <div>
-        <button click='active="src is 5.08kb"' class="bc-white bc-text-black bc-border bc-p-5 bc-hover-p-10 bc-m-5 bc-r-0">Source</button>
-        <button click='active="min is 3.51kb"' class="bc-white bc-text-black bc-border bc-p-5 bc-hover-p-10 bc-m-5 bc-r-0">Min</button>
-        <button click='active="build is 1.59kb"' class="bc-white bc-text-black bc-border bc-p-5 bc-hover-p-10 bc-m-5 bc-r-0">Build</button><br/>
+        <button click='active="src is 5.01kb"' class="bc-white bc-text-black bc-border bc-p-5 bc-hover-p-10 bc-m-5 bc-r-0">Source</button>
+        <button click='active="min is 3.46kb"' class="bc-white bc-text-black bc-border bc-p-5 bc-hover-p-10 bc-m-5 bc-r-0">Min</button>
+        <button click='active="build is 1.57kb"' class="bc-white bc-text-black bc-border bc-p-5 bc-hover-p-10 bc-m-5 bc-r-0">Build</button><br/>
         <span>Fjall</span>
         <em lint>
             {{active}}!!
         </em>
-    </div>
-    <script src="https://guyotjs.github.io/FjallJS/build/fjall-min.js"></script>
+    </div><br/><br/>
+    <blockquote>
+        “If your mind isn’t clouded by unnecessary things, then this is the best season of your life.”<br/>
+        - Wu Men
+    </blockquote><br/><br/>
+    <h2 id="learn"><a href="#learn">##</a> Learn The Basics</h2><br/>
+    <p>
+        Visit the tutorial <a href="https://guyotjs.github.io/FjallJS/Fjall-Basics">Here</a>!
+    </p><br/>
+    <h2 id="add"><a href="#add">##</a> Add Fjall to your Project</h2><br/>
+    <p>
+        All you need is <b>One</b> script tag<br/>
+        Download Locally <a href="https://guyotjs.github.io/FjallJS/build/fjall-min.js">Here</a><br/>
+        Run from the link with a script tag <br/><br/><pre><code>&#60;script src="https://guyotjs.github.io/FjallJS/build/fjall-min.js"&#62;&#60;/script&#62;</code></pre>
+    </p><br/><br/>
+    <script type="text/javascript" src="https://guyotjs.github.io/FjallJS/build/fjall-min.js"></script>
 </body>
-</html>
